@@ -24,12 +24,9 @@ dependencies:
   flutter_link_previewer:
     git:
       url: https://github.com/tgenez/flutter_link_previewer.git
-      ref: f8b1ac8  # commit hash
+      ref: 7e1428e  # commit hash
 
-  flutter_chat_types:
-    git:
-      url: https://github.com/tgenez/flutter_chat_types.git
-      ref: 0e6f6a1 # commit hash
+  flutter_chat_types: 3.0.2
 
 dev_dependencies:
   flutter_lints: ^1.0.4
