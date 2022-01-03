@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 
+import 'color_theme.dart';
+
 // For internal usage only. Use values from theme itself.
 
-/// See [ChatTheme.userAvatarNameColors]
-const colors = [
-  Color(0xffff6767),
-  Color(0xff66e0da),
-  Color(0xfff5a2d9),
-  Color(0xfff0c722),
-  Color(0xff6a85e5),
-  Color(0xfffd9a6f),
-  Color(0xff92db6e),
-  Color(0xff73b8e5),
-  Color(0xfffd7590),
-  Color(0xffc78ae5),
+const blue100 = Color(0xffdbeafe);
+const blue600 = Color(0xff2563eb);
+const green100 = Color(0xffdcfce7);
+const green600 = Color(0xff16a34a);
+const orange100 = Color(0xffffedd5);
+const orange600 = Color(0xffea580c);
+const grey600 = Color(0xff52525b);
+const grey800 = Color(0xff27272a);
+
+const List<ColorTheme> colorsTheme = [
+  ColorTheme(light: blue100, dark: blue600),
+  ColorTheme(light: green100, dark: green600),
+  ColorTheme(light: orange100, dark: orange600),
 ];
 
 /// Dark
@@ -217,7 +220,7 @@ abstract class ChatTheme {
   /// Colors used as backgrounds for user avatars with no image and so,
   /// corresponding user names.
   /// Calculated based on a user ID, so unique across the whole app.
-  final List<Color> userAvatarNameColors;
+  final List<ColorTheme> userAvatarNameColors;
 
   /// Text style used for displaying initials on user avatar if no
   /// image is provided
@@ -256,7 +259,7 @@ class DefaultChatTheme extends ChatTheme {
     ),
     Color errorColor = error,
     Widget? errorIcon,
-    Color inputBackgroundColor = neutral0,
+    Color inputBackgroundColor = grey800,
     BorderRadius inputBorderRadius = const BorderRadius.vertical(
       top: Radius.circular(20),
     ),
@@ -279,7 +282,7 @@ class DefaultChatTheme extends ChatTheme {
     Color primaryColor = primary,
     TextStyle receivedEmojiMessageTextStyle = const TextStyle(fontSize: 40),
     TextStyle receivedMessageBodyTextStyle = const TextStyle(
-      color: neutral0,
+      color: grey800,
       fontSize: 16,
       fontWeight: FontWeight.w500,
       height: 1.5,
@@ -292,13 +295,13 @@ class DefaultChatTheme extends ChatTheme {
     ),
     Color receivedMessageDocumentIconColor = primary,
     TextStyle receivedMessageLinkDescriptionTextStyle = const TextStyle(
-      color: neutral0,
+      color: grey800,
       fontSize: 14,
       fontWeight: FontWeight.w400,
       height: 1.428,
     ),
     TextStyle receivedMessageLinkTitleTextStyle = const TextStyle(
-      color: neutral0,
+      color: grey800,
       fontSize: 16,
       fontWeight: FontWeight.w800,
       height: 1.375,
@@ -336,7 +339,7 @@ class DefaultChatTheme extends ChatTheme {
     EdgeInsetsGeometry statusIconPadding =
         const EdgeInsets.symmetric(horizontal: 4),
     Color userAvatarImageBackgroundColor = Colors.transparent,
-    List<Color> userAvatarNameColors = colors,
+    List<ColorTheme> userAvatarNameColors = colorsTheme,
     TextStyle userAvatarTextStyle = const TextStyle(
       color: neutral7,
       fontSize: 12,
@@ -504,7 +507,7 @@ class DarkChatTheme extends ChatTheme {
     EdgeInsetsGeometry statusIconPadding =
         const EdgeInsets.symmetric(horizontal: 4),
     Color userAvatarImageBackgroundColor = Colors.transparent,
-    List<Color> userAvatarNameColors = colors,
+    List<ColorTheme> userAvatarNameColors = colorsTheme,
     TextStyle userAvatarTextStyle = const TextStyle(
       color: neutral7,
       fontSize: 12,

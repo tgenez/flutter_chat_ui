@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+import 'package:flutter_chat_ui/src/color_theme.dart';
 import 'package:intl/intl.dart';
 
 import './models/date_header.dart';
@@ -20,18 +21,9 @@ String formatBytes(int size, [int fractionDigits = 2]) {
       ['B', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][multiple];
 }
 
-Color darken(Color color, [double amount = .1]) {
-  assert(amount >= 0 && amount <= 1);
-
-  final hsl = HSLColor.fromColor(color);
-  final hslDark = hsl.withLightness((hsl.lightness - amount).clamp(0.0, 1.0));
-
-  return hslDark.toColor();
-}
-
 /// Returns user avatar and name color based on the ID
-Color getUserAvatarNameColor(types.User user, List<Color> colors) {
-  return darken(colors[user.id.hashCode % colors.length], 0.2);
+Color getUserAvatarNameColor(types.User user, List<ColorTheme> colors) {
+  return colors[user.id.hashCode % colors.length].dark;
 }
 
 /// Returns user initials (can have only first letter of firstName/lastName or both)
