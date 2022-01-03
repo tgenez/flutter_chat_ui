@@ -107,11 +107,12 @@ class TextMessage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: TextSpan(
-            text: showName ? name + ' ' : '',
-            style: theme.userNameTextStyle.copyWith(color: color),
+        SelectableText.rich(
+          TextSpan(
             children: [
+              TextSpan(
+                  text: showName ? name + ' ' : '',
+                  style: theme.userNameTextStyle.copyWith(color: color)),
               TextSpan(
                 text: message.text,
                 style: user.id == message.author.id
@@ -124,7 +125,7 @@ class TextMessage extends StatelessWidget {
               ),
             ],
           ),
-        )
+        ),
         // if (showName)
         //   Padding(
         //     padding: const EdgeInsets.only(bottom: 6),
