@@ -292,7 +292,7 @@ class DefaultChatTheme extends ChatTheme {
     TextStyle receivedEmojiMessageTextStyle = const TextStyle(fontSize: 40),
     TextStyle receivedMessageBodyTextStyle = const TextStyle(
       color: grey800,
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: FontWeight.w500,
       height: 1.5,
     ),
@@ -322,7 +322,7 @@ class DefaultChatTheme extends ChatTheme {
     TextStyle sentEmojiMessageTextStyle = const TextStyle(fontSize: 40),
     TextStyle sentMessageBodyTextStyle = const TextStyle(
       color: neutral7,
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: FontWeight.w500,
       height: 1.5,
     ),
@@ -356,8 +356,8 @@ class DefaultChatTheme extends ChatTheme {
       height: 1.333,
     ),
     TextStyle userNameTextStyle = const TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w800,
+      fontSize: 14,
+      fontWeight: FontWeight.bold,
       height: 1.333,
     ),
   }) : super(
@@ -460,7 +460,7 @@ class DarkChatTheme extends ChatTheme {
     TextStyle receivedEmojiMessageTextStyle = const TextStyle(fontSize: 40),
     TextStyle receivedMessageBodyTextStyle = const TextStyle(
       color: neutral7,
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: FontWeight.w500,
       height: 1.5,
     ),
@@ -490,7 +490,7 @@ class DarkChatTheme extends ChatTheme {
     TextStyle sentEmojiMessageTextStyle = const TextStyle(fontSize: 40),
     TextStyle sentMessageBodyTextStyle = const TextStyle(
       color: neutral7,
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: FontWeight.w500,
       height: 1.5,
     ),
@@ -524,8 +524,8 @@ class DarkChatTheme extends ChatTheme {
       height: 1.333,
     ),
     TextStyle userNameTextStyle = const TextStyle(
-      fontSize: 12,
-      fontWeight: FontWeight.w800,
+      fontSize: 14,
+      fontWeight: FontWeight.bold,
       height: 1.333,
     ),
   }) : super(

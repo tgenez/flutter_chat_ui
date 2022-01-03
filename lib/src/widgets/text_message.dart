@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_link_previewer/flutter_link_previewer.dart'
     show LinkPreview, regexLink;
+
 import '../models/emoji_enlargement_behavior.dart';
 import '../util.dart';
 import 'inherited_chat_theme.dart';
@@ -106,27 +107,45 @@ class TextMessage extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (showName)
-          Padding(
-            padding: const EdgeInsets.only(bottom: 6),
-            child: Text(
-              name,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: theme.userNameTextStyle.copyWith(color: color),
-            ),
+        RichText(
+          text: TextSpan(
+            text: showName ? name + ' ' : '',
+            style: theme.userNameTextStyle.copyWith(color: color),
+            children: [
+              TextSpan(
+                text: message.text,
+                style: user.id == message.author.id
+                    ? enlargeEmojis
+                        ? theme.sentEmojiMessageTextStyle
+                        : theme.sentMessageBodyTextStyle
+                    : enlargeEmojis
+                        ? theme.receivedEmojiMessageTextStyle
+                        : theme.receivedMessageBodyTextStyle,
+              ),
+            ],
           ),
-        SelectableText(
-          message.text,
-          style: user.id == message.author.id
-              ? enlargeEmojis
-                  ? theme.sentEmojiMessageTextStyle
-                  : theme.sentMessageBodyTextStyle
-              : enlargeEmojis
-                  ? theme.receivedEmojiMessageTextStyle
-                  : theme.receivedMessageBodyTextStyle,
-          textWidthBasis: TextWidthBasis.longestLine,
-        ),
+        )
+        // if (showName)
+        //   Padding(
+        //     padding: const EdgeInsets.only(bottom: 6),
+        //     child: Text(
+        //       name,
+        //       maxLines: 1,
+        //       overflow: TextOverflow.ellipsis,
+        //       style: theme.userNameTextStyle.copyWith(color: color),
+        //     ),
+        //   ),
+        // SelectableText(
+        //   message.text,
+        //   style: user.id == message.author.id
+        //       ? enlargeEmojis
+        //           ? theme.sentEmojiMessageTextStyle
+        //           : theme.sentMessageBodyTextStyle
+        //       : enlargeEmojis
+        //           ? theme.receivedEmojiMessageTextStyle
+        //           : theme.receivedMessageBodyTextStyle,
+        //   textWidthBasis: TextWidthBasis.longestLine,
+        // ),
       ],
     );
   }
