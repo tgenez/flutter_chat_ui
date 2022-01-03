@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
+
 import '../models/emoji_enlargement_behavior.dart';
 import '../util.dart';
 import 'file_message.dart';
@@ -129,7 +130,7 @@ class Message extends StatelessWidget {
 
     return showAvatar
         ? Container(
-            margin: const EdgeInsets.only(right: 8),
+            margin: const EdgeInsets.only(right: 4),
             child: GestureDetector(
               onTap: () => onAvatarTap?.call(message.author),
               child: CircleAvatar(
@@ -302,7 +303,7 @@ class Message extends StatelessWidget {
         left: 20,
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: [
           if (!_currentUserIsAuthor && showUserAvatars) _avatarBuilder(context),
