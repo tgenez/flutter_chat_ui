@@ -10,6 +10,12 @@ const green100 = Color(0xffdcfce7);
 const green600 = Color(0xff16a34a);
 const orange100 = Color(0xffffedd5);
 const orange600 = Color(0xffea580c);
+const red100 = Color(0xfffee2e2);
+const red600 = Color(0xffdc2626);
+const violet100 = Color(0xffede9fe);
+const violet600 = Color(0xff7c3aed);
+const pink100 = Color(0xffFCE7F3);
+const pink600 = Color(0xffDB2777);
 const grey600 = Color(0xff52525b);
 const grey800 = Color(0xff27272a);
 
@@ -17,6 +23,9 @@ const List<ColorTheme> colorsTheme = [
   ColorTheme(light: blue100, dark: blue600),
   ColorTheme(light: green100, dark: green600),
   ColorTheme(light: orange100, dark: orange600),
+  ColorTheme(light: red100, dark: red600),
+  ColorTheme(light: violet100, dark: violet600),
+  ColorTheme(light: pink100, dark: pink600),
 ];
 
 /// Dark
