@@ -113,13 +113,18 @@ List<Object> calculateChatMessages(
     final message = messages[i];
     final messageHasCreatedAt = message.createdAt != null;
     final nextMessage = isLast ? null : messages[i - 1];
+
+    final prevMessage = i + 1 > messages.length - 1 ? null : messages[i + 1];
     final nextMessageHasCreatedAt = nextMessage?.createdAt != null;
     final nextMessageSameAuthor = message.author.id == nextMessage?.author.id;
+    final prevMessageSameAuthor = message.author.id == prevMessage?.author.id;
+    final prevMessageHasCreatedAt = prevMessage?.createdAt != null;
     final notMyMessage = message.author.id != user.id;
 
     var nextMessageDateThreshold = false;
     var nextMessageDifferentDay = false;
     var nextMessageInGroup = false;
+    var prevMessageInGroup = false;
     var showName = false;
 
     if (showUserNames) {
@@ -159,6 +164,18 @@ List<Object> calculateChatMessages(
           nextMessage.createdAt! - message.createdAt! <= groupMessagesThreshold;
     }
 
+    if (messageHasCreatedAt && prevMessageHasCreatedAt) {
+      nextMessageDateThreshold =
+          prevMessage!.createdAt! - message.createdAt! >= dateHeaderThreshold;
+
+      nextMessageDifferentDay =
+          DateTime.fromMillisecondsSinceEpoch(message.createdAt!).day !=
+              DateTime.fromMillisecondsSinceEpoch(prevMessage.createdAt!).day;
+
+      prevMessageInGroup = prevMessageSameAuthor &&
+          prevMessage.createdAt! - message.createdAt! <= groupMessagesThreshold;
+    }
+
     if (isFirst && messageHasCreatedAt) {
       chatMessages.insert(
         0,
@@ -180,6 +197,7 @@ List<Object> calculateChatMessages(
     chatMessages.insert(0, {
       'message': message,
       'nextMessageInGroup': nextMessageInGroup,
+      'prevMessageInGroup': prevMessageInGroup,
       'showName': notMyMessage &&
           showUserNames &&
           showName &&

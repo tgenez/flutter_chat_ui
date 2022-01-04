@@ -1,9 +1,11 @@
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:flutter_chat_ui/src/widgets/inherited_l10n.dart';
 import 'package:intl/intl.dart';
 import 'package:photo_view/photo_view_gallery.dart';
+
 import '../chat_l10n.dart';
 import '../chat_theme.dart';
 import '../conditional/conditional.dart';
@@ -378,7 +380,7 @@ class _ChatState extends State<Chat> {
         },
         onPreviewDataFetched: _onPreviewDataFetched,
         roundBorder: map['nextMessageInGroup'] == true,
-        showAvatar: map['nextMessageInGroup'] == false,
+        showAvatar: map['prevMessageInGroup'] == false,
         showName: map['showName'] == true,
         showStatus: map['showStatus'] == true,
         showUserAvatars: widget.showUserAvatars,
